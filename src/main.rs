@@ -23,6 +23,5 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
 
         Hero {}
-
     }
 }
