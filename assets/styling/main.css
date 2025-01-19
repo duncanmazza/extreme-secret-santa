@@ -2,5 +2,96 @@ body {
     background-color: #0f1116;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #61dafb;
+}
+
+.question-card {
+    background-color: #1a1d24;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.question-text {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.multiple-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-button {
+    background-color: #2c313c;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.choice-button:hover {
+    background-color: #3e4451;
+}
+
+.open-response {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #2c313c;
+    border: 1px solid #3e4451;
+    color: white;
+    font-size: 1rem;
+}
+
+.feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.feedback.correct {
+    background-color: #1b4332;
+    color: #2ae886;
+}
+
+.feedback.incorrect {
+    background-color: #7f1d1d;
+    color: #fca5a5;
+}
+
+.success-or-failure-message {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.success-or-failure-message.success {
+    color: #2ae886;
+    background-color: #1b4332;
+}
+
+.success-or-failure-message.failure {
+    color: #e82a2a;
+    background-color: #431b1b;
 }
