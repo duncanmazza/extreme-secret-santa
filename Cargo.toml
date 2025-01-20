@@ -8,6 +8,7 @@ edition = "2021"
 
 [dependencies]
 dioxus = { version = "0.6.0", features = [] }
+lazy_static = "1.5.0"
 
 [features]
 default = ["web"]
