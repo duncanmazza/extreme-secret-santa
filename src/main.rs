@@ -55,18 +55,18 @@ fn App() -> Element {
         answers
             .read()
             .get(q.id)
-            .map_or(false, |a| a == &q.correct_answer)
+            .map_or(false, |a| a.trim().eq_ignore_ascii_case(q.correct_answer))
     });
-
 
     rsx! {
         // Global app resources
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
-        document::Link { rel: "stylesheet", href: TAILWIND_CSS }
 
         div { class: "container",
             h1 { class: "title", "Trivia Challenge" }
+
+            p { class: "body", "TODO" }
 
             div { class: "questions",
                 {
@@ -84,9 +84,7 @@ fn App() -> Element {
             {
                 if all_correct {
                     rsx! {
-                        div { class: "success-or-failure-message failure",
-                            "🎉 Congratulations! You've answered all questions correctly!"
-                        }
+                        div { class: "success-or-failure-message success", "🎉 The combination lock passcode is ***REMOVED***" }
                     }
                 } else {
                     rsx! {
@@ -110,10 +108,10 @@ fn QuestionCard(
         answer.set(new_answer);
     };
 
-    let is_correct = answers
-        .read()
-        .get(question.id)
-        .map_or(false, |a| a == &question.correct_answer);
+    // let is_correct = answers
+    //     .read()
+    //     .get(question.id)
+    //     .map_or(false, |a| a == &question.correct_answer);
 
     rsx! {
         div { class: "question-card",
@@ -128,13 +126,11 @@ fn QuestionCard(
                                     .iter()
                                     .map(|option| {
                                         let option_str = *option;
+                                        let is_selected = answer() == option_str;
                                         rsx! {
                                             button {
-                                                class: "choice-button",
-                                                onclick: move |_| {
-                                                    let mut handle_answer = handle_answer;
-                                                    handle_answer(option_str.to_string())
-                                                },
+                                                class: if is_selected { "choice-button selected" } else { "choice-button" },
+                                                onclick: move |_| handle_answer(option_str.to_string()),
                                                 "{option}"
                                             }
                                         }
@@ -150,23 +146,6 @@ fn QuestionCard(
                             oninput: move |evt| handle_answer(evt.value().clone()),
                         }
                     },
-                }
-            }
-
-            // Show feedback
-            {
-                if !answer().is_empty() {
-                    rsx! {
-                        div { class: if is_correct { "feedback correct" } else { "feedback incorrect" },
-                            if is_correct {
-                                "✓ Correct!"
-                            } else {
-                                "✗ Try again"
-                            }
-                        }
-                    }
-                } else {
-                    rsx! {}
                 }
             }
         }

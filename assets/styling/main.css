@@ -52,6 +52,10 @@ body {
     background-color: #3e4451;
 }
 
+.choice-button.selected {
+    background-color: #646d82;
+}
+
 .open-response {
     width: 100%;
     padding: 10px;
