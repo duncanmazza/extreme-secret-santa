@@ -3,7 +3,6 @@ use std::collections::HashMap;
 
 extern crate lazy_static;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/styling/main.css");
 
 // Define the types of answers we support
@@ -57,10 +56,8 @@ fn main() {
 
 #[component]
 fn App() -> Element {
-    // Track answers using signal instead of ref
     let answers = use_signal(|| HashMap::<i32, String>::new());
-    
-    // Calculate if all questions are answered correctly
+
     let all_correct = QUESTIONS.iter().all(|q| {
         answers
             .read()
@@ -69,9 +66,11 @@ fn App() -> Element {
     });
 
     rsx! {
-        // Global app resources
-        document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Link {
+            rel: "icon",
+            href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎅</text></svg>",
+        }
 
         div { class: "container",
             h1 { class: "title", "Trivia Challenge" }
@@ -90,7 +89,6 @@ fn App() -> Element {
                 }
             }
 
-            // Show success message when all answers are correct
             {
                 if all_correct {
                     rsx! {
@@ -98,7 +96,7 @@ fn App() -> Element {
                     }
                 } else {
                     rsx! {
-                        div { class: "success-or-failure-message failure", "Not all questions have been answered correctly " }
+                        div { class: "success-or-failure-message failure", "Not all questions have been answered correctly" }
                     }
                 }
             }
@@ -107,21 +105,13 @@ fn App() -> Element {
 }
 
 #[component]
-fn QuestionCard(
-    question: Question, 
-    answers: Signal<HashMap<i32, String>>
-) -> Element {
+fn QuestionCard(question: Question, answers: Signal<HashMap<i32, String>>) -> Element {
     let mut answer = use_signal(String::new);
 
     let mut handle_answer = move |new_answer: String| {
         answers.write().insert(question.id, new_answer.clone());
         answer.set(new_answer);
     };
-
-    // let is_correct = answers
-    //     .read()
-    //     .get(question.id)
-    //     .map_or(false, |a| a == &question.correct_answer);
 
     rsx! {
         div { class: "question-card",
