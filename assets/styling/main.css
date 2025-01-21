@@ -32,6 +32,12 @@ body {
     margin-bottom: 1rem;
 }
 
+.question-img {
+    width: 30%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
 .multiple-choice {
     display: flex;
     flex-direction: column;

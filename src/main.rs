@@ -19,6 +19,7 @@ struct Question {
     text: &'static str,
     answer_type: AnswerType,
     correct_answer: &'static str,
+    image: Option<Asset>,
 }
 
 lazy_static::lazy_static! {
@@ -29,6 +30,7 @@ lazy_static::lazy_static! {
                 text: "What is the capital of France?",
                 answer_type: AnswerType::OpenResponse,
                 correct_answer: "Paris",
+                image: None,
             },
             Question {
                 id: 0,
@@ -39,6 +41,7 @@ lazy_static::lazy_static! {
                     "Mars",
                 ]),
                 correct_answer: "Mercury",
+                image: None,
             },
         ];
         questions.into_iter().enumerate()
@@ -115,7 +118,12 @@ fn QuestionCard(question: Question, answers: Signal<HashMap<i32, String>>) -> El
 
     rsx! {
         div { class: "question-card",
+
             h3 { class: "question-text", "{question.text}" }
+
+            if let Some(image_unwrapped) = question.image {
+                img { class: "question-img", src: image_unwrapped }
+            }
 
             div { class: "answer-section",
                 match question.answer_type {
