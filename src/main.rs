@@ -76,30 +76,45 @@ fn App() -> Element {
         }
 
         div { class: "container",
-            h1 { class: "title", "Trivia Challenge" }
+            h1 { class: "title", "Julia's Extreme Secret Santa Challenge!" }
 
-            p { class: "body", "TODO" }
-
-            div { class: "questions",
-                {
-                    QUESTIONS
-                        .iter()
-                        .map(|question| {
-                            rsx! {
-                                QuestionCard { key: question.id, question: question.clone(), answers }
-                            }
-                        })
+            p { class: "body",
+                "Use your extensive knowledge of and recent trip to Disney to access the combination lock code and unlock your gift. You are welcome to use any "
+                "internet resrouces you would like, and are encouraged to reference the same "
+                a { href: "https://disneyworld.disney.go.com/resorts/map/#/sort=alpha/",
+                    "Disney map"
                 }
+                " that was used to create these questions. Good luck!"
             }
 
-            {
-                if all_correct {
-                    rsx! {
-                        div { class: "success-or-failure-message success", "🎉 The combination lock passcode is ***REMOVED***" }
+            br {}
+
+            div { class: "column-container",
+                div { class: "left-column",
+                    {
+                        QUESTIONS
+                            .iter()
+                            .map(|question| {
+                                rsx! {
+                                    QuestionCard { key: question.id, question: question.clone(), answers }
+                                }
+                            })
                     }
-                } else {
-                    rsx! {
-                        div { class: "success-or-failure-message failure", "Not all questions have been answered correctly" }
+                }
+
+                div { class: "right-column", style: "width: 30%",
+                    div {
+                        {
+                            if all_correct {
+                                rsx! {
+                                    div { class: "success-or-failure-message success", "🎉 The combination lock passcode is ***REMOVED***" }
+                                }
+                            } else {
+                                rsx! {
+                                    div { class: "success-or-failure-message failure", "Not all questions have been answered correctly" }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -119,7 +134,7 @@ fn QuestionCard(question: Question, answers: Signal<HashMap<i32, String>>) -> El
     rsx! {
         div { class: "question-card",
 
-            h3 { class: "question-text", "{question.text}" }
+            h3 { class: "question-text", "{question.id}. {question.text}" }
 
             if let Some(image_unwrapped) = question.image {
                 img { class: "question-img", src: image_unwrapped }

@@ -6,11 +6,46 @@ body {
     padding: 20px;
 }
 
+a {
+    color: inherit;
+    font-family: inherit;
+}
+
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    height: 100vh;
 }
+
+.column-container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-column {
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.right-column {
+    width: 30%;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
 
 .title {
     text-align: center;
@@ -63,7 +98,7 @@ body {
 }
 
 .open-response {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     border-radius: 4px;
     background-color: #2c313c;
