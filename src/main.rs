@@ -27,23 +27,57 @@ lazy_static::lazy_static! {
         let questions = vec![
             Question {
                 id: 0,
-                text: "What is the capital of France?",
-                answer_type: AnswerType::OpenResponse,
-                correct_answer: "Paris",
+                text: "At which hotel can you find giant Duncan's Yo-Yo Tops?",
+                answer_type: AnswerType::MultipleChoice(&[
+                    "All-Star Movies",
+                    "All-Star Music",
+                    "All-Star Sports",
+                    "Pop Century",
+                ]),
+                correct_answer: "Pop Century",
                 image: None,
             },
             Question {
                 id: 0,
-                text: "Which planet is closest to the Sun?",
-                answer_type: AnswerType::MultipleChoice(&[
-                    "Venus",
-                    "Mercury",
-                    "Mars",
-                ]),
-                correct_answer: "Mercury",
+                text: "What roller coaster is closest to an establishment that offers green milk on its menu?",
+                answer_type: AnswerType::OpenResponse,
+                correct_answer: "Slinky Dog Dash",
                 image: None,
             },
-        ];
+            Question {
+                id: 0,
+                text: "In the World Showcase, a piece of artwork can be found on the side of a building featuring a diety; among the various names this diety goes by, which is the longest uninterrupted by whitespace (according to Wikipedia)?",
+                answer_type: AnswerType::OpenResponse,
+                correct_answer: "Tlahuizcalpantecuhtli",
+                image: None,
+            },
+            Question {
+                id: 0,
+                text: "Which hotel has this courtyard?",
+                answer_type: AnswerType::MultipleChoice(&[
+                    "Port Orleans - Riverside",
+                    "Port Orleans - French Quarter",
+                    "Art of Animation",
+                    "Coronado Sprints",
+                ]),
+                correct_answer: "Port Orleans - French Quarter",
+                image: Some(asset!("/assets/images/french_quarter.png")),
+            },
+            Question {
+                id: 0,
+                text: "At what golf course hole number can you find the west-most Mickey Mouse-Shaped sand pit?",
+                answer_type: AnswerType::OpenResponse,
+                correct_answer: "6",
+                image: None,
+            },
+            ];
+
+        for question in questions.iter() {
+            if let AnswerType::MultipleChoice(multiple_choice) = question.answer_type {
+                assert!(multiple_choice.contains(&question.correct_answer));
+            }
+        }
+
         questions.into_iter().enumerate()
             .map(|(i, mut q)| {
                 q.id = (i + 1) as i32;
@@ -79,12 +113,12 @@ fn App() -> Element {
             h1 { class: "title", "Julia's Extreme Secret Santa Challenge!" }
 
             p { class: "body",
-                "Use your extensive knowledge of and recent trip to Disney to access the combination lock code and unlock your gift. You are welcome to use any "
-                "internet resrouces you would like, and are encouraged to reference the same "
+                "Use your extensive knowledge of and recent trip to Disney World to access the combination lock code and unlock your gift. You are welcome to use any "
+                "internet resrouces you would like, including referencing the same "
                 a { href: "https://disneyworld.disney.go.com/resorts/map/#/sort=alpha/",
                     "Disney map"
                 }
-                " that was used to create these questions. Good luck!"
+                " that was used to create some of these questions. Good luck!"
             }
 
             br {}
