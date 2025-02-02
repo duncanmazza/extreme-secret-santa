@@ -46,7 +46,9 @@ lazy_static::lazy_static! {
             },
             Question {
                 id: 0,
-                text: "In the World Showcase, a piece of artwork can be found on the side of a building featuring a diety; among the various names this diety goes by, which is the longest uninterrupted by whitespace (according to Wikipedia)?",
+                text: "In the World Showcase, a piece of artwork can be found on the side of a building featuring a diety;
+                among the various names this diety goes by, which is the longest uninterrupted by whitespace (according to 
+                Wikipedia)?",
                 answer_type: AnswerType::OpenResponse,
                 correct_answer: "Tlahuizcalpantecuhtli",
                 image: None,
@@ -106,15 +108,17 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         document::Link {
             rel: "icon",
-            href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎅</text></svg>",
+            href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+            <text y=%22.9em%22 font-size=%2290%22>🎅</text></svg>",
         }
 
         div { class: "container",
             h1 { class: "title", "Julia's Extreme Secret Santa Challenge!" }
 
             p { class: "body",
-                "Use your extensive knowledge of and recent trip to Disney World to access the combination lock code and unlock your gift. You are welcome to use any "
-                "internet resrouces you would like, including referencing the same "
+                "Use your extensive knowledge of and recent trip to Disney World to access the combination lock
+                code and unlock your gift. You are welcome to use any internet resrouces you would like, 
+                including referencing the same "
                 a { href: "https://disneyworld.disney.go.com/resorts/map/#/sort=alpha/",
                     "Disney map"
                 }
