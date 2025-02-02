@@ -27,18 +27,6 @@ lazy_static::lazy_static! {
         let questions = vec![
             Question {
                 id: 0,
-                text: "At which hotel can you find giant Duncan's Yo-Yo Tops?",
-                answer_type: AnswerType::MultipleChoice(&[
-                    "All-Star Movies",
-                    "All-Star Music",
-                    "All-Star Sports",
-                    "Pop Century",
-                ]),
-                correct_answer: "Pop Century",
-                image: None,
-            },
-            Question {
-                id: 0,
                 text: "What roller coaster is closest to an establishment that offers green milk on its menu?",
                 answer_type: AnswerType::OpenResponse,
                 correct_answer: "Slinky Dog Dash",
@@ -70,6 +58,85 @@ lazy_static::lazy_static! {
                 text: "At what golf course hole number can you find the west-most Mickey Mouse-Shaped sand pit?",
                 answer_type: AnswerType::OpenResponse,
                 correct_answer: "6",
+                image: None,
+            },
+            Question {
+                id: 0,
+                text: "Approximately how much area is covered by the visitor parking lots just north of Epicot? (Not
+                including lots for buses.)",
+                answer_type: AnswerType::MultipleChoice(
+                    &[
+                        "320329 m^2",
+                        "230932 m^2",
+                        "1142009 m^2",
+                        "11420 m^2",
+                    ]
+                ),
+                correct_answer: "320329 m^2",
+                image: None
+            },
+            Question {
+                id: 0,
+                text: "According to the only 1-star review on Google Reviews of the Mickey Mouse-shaped solar farm,
+                what should Disney have done instead?",
+                answer_type: AnswerType::MultipleChoice(
+                    &[
+                        "Build a subcritical coal power plant",
+                        "Extract enenrgy from roller coasters using regenerative braking",
+                        "Build solar panels over the parking lots to minimize additional land use",
+                        "Build a rectangular solar farm, because no one cares about the aerial view of a solar farm",
+                    ]
+                ),
+                correct_answer: "Build solar panels over the parking lots to minimize additional land use",
+                image: None
+            },
+            Question {
+                id: 0,
+                text: "If you were to demolish the Epicot Sphere and build a circular solar farm in its footprint, 
+                what annual energy intensity would you achieve? (Hint: use shademap.app)",
+                answer_type: AnswerType::MultipleChoice(
+                    &[
+                        "345 kWh/m^2",
+                        "435 kWh/m^2",
+                        "565 kWh/m^2",
+                        "655 kWh/m^2",
+                    ]
+                ),
+                correct_answer: "565 kWh/m^2",
+                image: None
+            },
+            Question {
+                id: 0,
+                text: "If C-3PO hobbles along at 2mph, how many hours would it take him to walk around the hourglass
+                lake?",
+                answer_type: AnswerType::MultipleChoice(
+                    &[
+                        "0.42",
+                        "0.63",
+                        "0.72",
+                        "0.95",
+                    ]
+                ),
+                correct_answer: "0.63",
+                image: None
+            },
+            Question {
+                id: 0,
+                text: "What is the name of the open-source scripting language Disney developed?",
+                answer_type: AnswerType::OpenResponse,
+                correct_answer: "Groovity",
+                image: None
+            },
+            Question {
+                id: 0,
+                text: "At which hotel can you find giant Duncan's Yo-Yo Tops?",
+                answer_type: AnswerType::MultipleChoice(&[
+                    "All-Star Movies",
+                    "All-Star Music",
+                    "All-Star Sports",
+                    "Pop Century",
+                ]),
+                correct_answer: "Pop Century",
                 image: None,
             },
             ];

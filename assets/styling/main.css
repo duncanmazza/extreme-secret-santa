@@ -20,7 +20,7 @@ a {
 
 .column-container {
     display: flex;
-    height: 100vh;
+    height: 80vh;
 }
 
 .left-column {
@@ -44,8 +44,6 @@ a {
     display: table;
     clear: both;
 }
-
-
 
 .title {
     text-align: center;
