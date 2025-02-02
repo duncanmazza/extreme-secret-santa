@@ -58,7 +58,7 @@ lazy_static::lazy_static! {
                 text: "At what golf course hole number can you find the west-most Mickey Mouse-Shaped sand pit?",
                 answer_type: AnswerType::OpenResponse,
                 correct_answer: "6",
-                image: None,
+                image: Some(asset!("/assets/images/mickey_mouse_sand_trap.png")),
             },
             Question {
                 id: 0,
@@ -88,11 +88,11 @@ lazy_static::lazy_static! {
                     ]
                 ),
                 correct_answer: "Build solar panels over the parking lots to minimize additional land use",
-                image: None
+                image: Some(asset!("/assets/images/solar_farm.jpg")),
             },
             Question {
                 id: 0,
-                text: "If you were to demolish the Epicot Sphere and build a circular solar farm in its footprint, 
+                text: "If you were to demolish the Epicot Sphere and build a circular solar farm in its footprint,
                 what annual energy intensity would you achieve? (Hint: use shademap.app)",
                 answer_type: AnswerType::MultipleChoice(
                     &[
@@ -118,7 +118,7 @@ lazy_static::lazy_static! {
                     ]
                 ),
                 correct_answer: "0.63",
-                image: None
+                image: Some(asset!("/assets/images/hourglass_lake.png")),
             },
             Question {
                 id: 0,
