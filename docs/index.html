@@ -5,16 +5,14 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-  <link rel="preload" href="/./wasm/extreme-secret-santa_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-            <link rel="preload" href="/./wasm/extreme-secret-santa.js" as="script">
-            </head>
+  <link rel="preload" as="script" href="/./assets/extreme-secret-santa-85249a7bd8befba3.js" crossorigin><link rel="preload" as="fetch" type="application/wasm" href="/./assets/extreme-secret-santa_bg-29971b5d7583b99f.wasm" crossorigin></head>
   <body>
     <div id="main"></div>
   <script>
             // We can't use a module script here because we need to start the script immediately when streaming
-            import("/./wasm/extreme-secret-santa.js").then(
+            import("/./assets/extreme-secret-santa-85249a7bd8befba3.js").then(
                 ({ default: init }) => {
-                init("/./wasm/extreme-secret-santa_bg.wasm").then((wasm) => {
+                init("/./assets/extreme-secret-santa_bg-29971b5d7583b99f.wasm").then((wasm) => {
                     if (wasm.__wbindgen_start == undefined) {
                     wasm.main();
                     }
