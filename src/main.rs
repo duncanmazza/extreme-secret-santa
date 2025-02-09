@@ -1,3 +1,4 @@
+use ::extreme_secret_santa::obf::deobfuscate;
 use dioxus::prelude::*;
 use std::collections::HashMap;
 
@@ -156,6 +157,10 @@ lazy_static::lazy_static! {
     };
 }
 
+lazy_static::lazy_static! {
+    static ref PASSWORD: String = deobfuscate("06.1;.04");
+}
+
 fn main() {
     dioxus::launch(App);
 }
@@ -163,6 +168,7 @@ fn main() {
 #[component]
 fn App() -> Element {
     let answers = use_signal(|| HashMap::<i32, String>::new());
+    let password = PASSWORD.as_str();
 
     let all_correct = QUESTIONS.iter().all(|q| {
         answers
@@ -207,7 +213,7 @@ fn App() -> Element {
                         {
                             if all_correct {
                                 rsx! {
-                                    div { class: "success-or-failure-message success", "🎉 The combination lock passcode is ***REMOVED***" }
+                                    div { class: "success-or-failure-message success", "🎉 The combination lock passcode is {password}" }
                                 }
                             } else {
                                 rsx! {
