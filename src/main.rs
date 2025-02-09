@@ -184,12 +184,7 @@ fn App() -> Element {
 
             p { class: "body",
                 "Use your extensive knowledge of and recent trip to Disney World to access the combination lock
-                code and unlock your gift. You are welcome to use any internet resrouces you would like, 
-                including referencing the same "
-                a { href: "https://disneyworld.disney.go.com/resorts/map/#/sort=alpha/",
-                    "Disney map"
-                }
-                " that was used to create some of these questions. Good luck!"
+                code and unlock your gift. You are welcome to use any internet resrouces you would like. Good luck!"
             }
 
             br {}
